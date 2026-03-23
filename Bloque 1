@@ -1,0 +1,13 @@
+Bloque 1: Pilas (LIFO - Last In, First Out)
+
+1-Se apilan URLs visitadas. Al presionar “Atrás” → Desapilar() retorna la última URL (LIFO)
+
+2-Se apila el estado previo del sistema en cada modificación. Desapilar() restaura el estado anterior
+
+3-Se emplea una pila para almacenar símbolos de apertura “(” mediante Apilar() cada vez que aparecen. Al encontrar un “)”, se verifica que la pila no esté vacía y se realiza Desapilar() para validar correspondencia
+
+4-El string se recorre secuencialmente apilando cada carácter con Apilar(). Posteriormente, al aplicar Desapilar() de manera iterativa, los caracteres se obtienen en orden inverso, construyendo así el string invertido gracias a la propiedad LIFO de la estructura
+
+5-Cada invocación de función genera un registro de activación que se inserta en la pila mediante Apilar(), quedando en el Tope() la función actualmente en ejecución; por ejemplo, si Main() llama a CalcularPromedio() y esta a Sumar(), durante la ejecución de esta última, Sumar() se encuentra en el tope de la pila
+
+6-Se modela mediante una pila de rutas donde cada acceso a un nuevo directorio implica Apilar(rutaActual). Al ejecutar la acción de “subir un nivel”, se realiza Desapilar() para eliminar la ruta actual y retornar a la inmediatamente anterior
