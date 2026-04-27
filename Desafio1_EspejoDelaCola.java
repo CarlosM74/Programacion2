@@ -19,9 +19,9 @@ public class Desafio1_EspejoDelaCola {
 
     public static void main(String[] args) {
         Queue<Integer> cola = new LinkedList<>(Arrays.asList(1, 2, 3, 2, 1));
-        System.out.println("¿Es palíndromo? " + esPalindromo(cola)); // true
+        System.out.println("¿Es palíndromo? " + esPalindromo(cola)); 
 
         Queue<Integer> cola2 = new LinkedList<>(Arrays.asList(1, 2, 3, 4, 5));
-        System.out.println("¿Es palíndromo? " + esPalindromo(cola2)); // false
+        System.out.println("¿Es palíndromo? " + esPalindromo(cola2)); 
     }
 }
