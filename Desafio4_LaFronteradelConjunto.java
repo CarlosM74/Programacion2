@@ -24,6 +24,6 @@ public class Desafio4_LaFronteradelConjunto {
         Set<Integer> B = new HashSet<>(Arrays.asList(4, 5, 6, 7, 8));
 
         Set<Integer> diferencia = diferenciaSimetrica(A, B);
-        System.out.println("Diferencia simétrica: " + diferencia); // [1, 2, 3, 6, 7, 8]
+        System.out.println("Diferencia simétrica: " + diferencia); 
     }
 }
