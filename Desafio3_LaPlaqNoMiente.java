@@ -28,7 +28,7 @@ public class Desafio3_LaPlaqNoMiente {
         pila.push(15);
         pila.push(20);
 
-        System.out.println("¿Contiene 10? " + perteneceEnPila(pila, 10)); // true
-        System.out.println("¿Contiene 100? " + perteneceEnPila(pila, 100)); // false
+        System.out.println("¿Contiene 10? " + perteneceEnPila(pila, 10)); 
+        System.out.println("¿Contiene 100? " + perteneceEnPila(pila, 100));
     }
 }
