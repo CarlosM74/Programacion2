@@ -1,0 +1,113 @@
+EJERCICIO 1: ANÁLISIS DE CICLOS ANIDADOS
+
+Código a analizar:
+public static int buscarYValidar(int[] array) {
+    for(int i = 0; i < array.length; i++) {           // Ciclo N1: O(n)
+        if(array[i] == 5) {                            // O(1)
+            return i;                                   // O(1)
+        } else {
+            for(int j = 0; j < i; j++) {               // Ciclo N2: O(i)
+                if(array[j] == 6) {                    // O(1)
+                    return i;                           // O(1)
+                }
+            }
+        }
+    }
+    return -1;                                          // O(1)
+}
+
+ANÁLISIS DEL CÓDIGO:
+
+Peor caso: Nunca encuentra 5 ni 6, recorre todos los elementos.
+
+Tabla de iteraciones:
+Iteración | Ciclo N1 | Ciclo N2 ejecuta
+i = 0     | 1        | 0 veces
+i = 1     | 1        | 1 vez
+i = 2     | 1        | 2 veces
+i = 3     | 1        | 3 veces
+...       | ...      | ...
+i = n-1   | 1        | (n-1) veces
+
+Total de operaciones en N2: 0 + 1 + 2 + 3 + ... + (n-1) = n(n-1)/2
+
+CÁLCULO DE COMPLEJIDAD:
+T(n) = n(n-1)/2 = (n² - n)/2
+
+FAMILIA DE COMPLEJIDAD: O(n²)
+
+JUSTIFICACIÓN: 
+Aunque el ciclo N2 es condicional (depende del else), en el peor caso se ejecuta completamente para cada iteración del ciclo N1. Esto genera ciclos anidados cuya suma total de iteraciones es proporcional a n². Descartando el término de menor orden (-n) y la constante (1/2), obtenemos O(n²).
+
+---
+
+EJERCICIO 2: ANÁLISIS DEL ALGORITMO FILTRAR(LIMITE)
+
+Descripción del algoritmo:
+1. Recorre la cola original de n elementos extrayéndolos uno a uno
+2. Guarda cada elemento en una estructura auxiliar tmp
+3. Si el elemento es mayor al límite, lo guarda en la cola de resultados res
+4. Al finalizar, vuelca los elementos de tmp nuevamente a la cola original
+
+PARTE (A): COMPLEJIDAD TEMPORAL O(n)
+
+Recorridos completos sobre los datos:
+- Primer recorrido: Extraer todos los n elementos de la cola original y guardarlos en tmp → O(n)
+- Segundo recorrido: Revisar cada elemento de tmp para filtrar en res → O(n)
+- Tercer recorrido: Devolver los n elementos de tmp a la cola original → O(n)
+
+CÁLCULO TOTAL:
+T(n) = O(n) + O(n) + O(n) = O(3n) = O(n)
+
+JUSTIFICACIÓN: 
+Se realizan 3 recorridos completos sobre los n elementos. Como las constantes se descartan en la notación Big O, se simplifica a O(n). No hay ciclos anidados, por lo que no hay multiplicación de complejidades. Cada operación es lineal con respecto al tamaño de entrada.
+
+CONCLUSIÓN PARTE (A): Complejidad Temporal = O(n)
+
+---
+
+PARTE (B): COMPLEJIDAD ESPACIAL O(n)
+
+Análisis de memoria adicional:
+
+Estructura auxiliar | Tamaño en peor caso
+tmp (copia de elementos) | O(n)
+res (resultados filtrados) | O(n) en peor caso (todos > límite)
+Variables locales | O(1) se descartan
+TOTAL | O(n)
+
+DESGLOSE DETALLADO:
+
+tmp: Almacena todos los n elementos extraídos de la cola original
+    Tamaño = O(n)
+
+res: En el peor caso, todos los elementos son mayores al límite
+    Por lo tanto contiene n elementos
+    Tamaño = O(n)
+
+Variables locales (contador, elemento actual, límite):
+    Tamaño = O(1)
+    Se descartan en notación Big O
+
+CÁLCULO TOTAL:
+S(n) = O(n) + O(n) + O(1) = O(2n) = O(n)
+
+JUSTIFICACIÓN: 
+La complejidad espacial es O(n) porque se necesita espacio proporcional a los datos de entrada. Aunque técnicamente es O(2n), se simplifica a O(n) en notación Big O porque los factores constantes se descartan. La memoria se utiliza linealmente con respecto al tamaño de la entrada, no hay estructuras recursivas que aumenten el uso de espacio.
+
+CONCLUSIÓN PARTE (B): Complejidad Espacial = O(n)
+
+---
+
+RESUMEN FINAL
+
+EJERCICIO 1:
+Respuesta: O(n²)
+Justificación: Ciclos anidados donde el ciclo interno ejecuta de 0 a (n-1) veces según el valor de i. La suma total es n(n-1)/2, que pertenece a la familia O(n²).
+
+EJERCICIO 2:
+(a) Complejidad Temporal: O(n)
+Justificación: Tres recorridos completos lineales sin ciclos anidados.
+
+(b) Complejidad Espacial: O(n)
+Justificación: Dos estructuras auxiliares (tmp y res) que almacenan elementos proporcionales a n.
